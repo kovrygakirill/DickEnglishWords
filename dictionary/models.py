@@ -4,7 +4,7 @@ from loginsys.models import UserProfile
 
 class Dictionary(models.Model):
     name = models.CharField(max_length=30)
-    user_id = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, related_name='dictionaries')
+    user_id = models.ForeignKey(UserProfile, null=True, on_delete=models.SET_NULL, related_name='dictionaries')
 
     def __str__(self):
         return self.name
