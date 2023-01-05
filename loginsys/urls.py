@@ -1,9 +1,13 @@
 from django.urls import path, re_path
-from django.views.decorators.csrf import csrf_exempt
-from . import views
+from .views import LoginViewSet
 
+
+login = LoginViewSet.as_view({
+    'get': 'get_page',
+    'post': 'authorization'
+})
 
 urlpatterns = [
-    path('login/', csrf_exempt(views.login)),
+    path(r'login/', login, name='login'),
 ]
 
