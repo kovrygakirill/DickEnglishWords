@@ -7,6 +7,10 @@ from django.contrib import auth
 from business_logic.loginsys.login import authorization_user
 from business_logic.loginsys.validator import Validator
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class LoginViewSet(viewsets.ViewSet):
     validator = Validator()
@@ -24,9 +28,11 @@ class LoginViewSet(viewsets.ViewSet):
         if not error_valid_user:
             auth.login(request, user)
             response = redirect("/")
+            logger.info(f"Authorization of User({username})")
         else:
             args = {"login_error": error_valid_user}
             response = render(request, "login.html", args)
+            logger.info(f"User({username}) wasn't authorization")
 
         return response
 
@@ -50,6 +56,7 @@ class RegisterViewSet(viewsets.ViewSet):
             # send_email_for_register(email, user_profile.user.id)
             response = render(request, "login.html")
         else:
+            logger.info(f"Registration crushed for User({username} with Email({email}))")
             args = {"register_error": error_valid_fields}
             response = render(request, "login.html", args)
 
