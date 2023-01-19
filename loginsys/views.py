@@ -6,6 +6,7 @@ from django.contrib import auth
 
 from business_logic.loginsys.login import authorization_user
 from business_logic.loginsys.validator import Validator
+from business_logic.loginsys.register import create_not_active_user
 
 import logging
 
@@ -52,12 +53,12 @@ class RegisterViewSet(viewsets.ViewSet):
         error_valid_fields = self.validator.get_error_valid_fields(username=username, email=email)
 
         if not error_valid_fields:
-            # user_profile = create_not_active_user(username, email, password1)
+            not_active_user = create_not_active_user(username=username, email=email, password=password)
             # send_email_for_register(email, user_profile.user.id)
             response = render(request, "login.html")
         else:
-            logger.info(f"Registration crushed for User({username} with Email({email}))")
             args = {"register_error": error_valid_fields}
             response = render(request, "login.html", args)
+            logger.info(f"Registration crushed for User({username}) with Email({email})")
 
         return response
