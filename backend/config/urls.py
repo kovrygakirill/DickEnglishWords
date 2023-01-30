@@ -1,4 +1,4 @@
-"""DickEnglishWords URL Configuration
+"""config URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -18,6 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('loginsys.urls')),
-    path('', include('dictionary.urls')),
+    path('auth/', include('apps.loginsys.urls')),
+    path('', include('apps.dictionary.urls')),
 ]

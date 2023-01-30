@@ -1,5 +1,5 @@
 from django.db import models
-from loginsys.models import UserProfile
+from apps.loginsys.models import UserProfile
 
 
 class Word(models.Model):

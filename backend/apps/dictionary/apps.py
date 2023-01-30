@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class LoginsysConfig(AppConfig):
+class DictionaryConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'loginsys'
+    name = 'apps.dictionary'
