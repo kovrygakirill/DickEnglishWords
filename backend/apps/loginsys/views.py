@@ -4,9 +4,9 @@ from rest_framework.request import Request
 from rest_framework.decorators import action
 from django.contrib import auth
 
-from business_logic.loginsys.login import authorization_user
-from business_logic.loginsys.validator import Validator
-from business_logic.loginsys.register import create_user_profile
+from business_logic.syslogin.login import authorization_user
+from business_logic.syslogin.validator import Validator
+from business_logic.syslogin.register import create_user_profile
 
 import logging
 

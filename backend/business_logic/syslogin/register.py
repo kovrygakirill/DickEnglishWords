@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import transaction
 from django.db import DatabaseError
 
-from apps.loginsys.models import UserProfile
+from loginsys.models import UserProfile
 from business_logic.my_exceptions import ProblemWithDataBase
 import logging
 
