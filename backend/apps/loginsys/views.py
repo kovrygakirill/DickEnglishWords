@@ -17,7 +17,12 @@ class LoginViewSet(viewsets.ViewSet):
     validator = Validator()
 
     def get_page(self, request: Request):
-        return render(request, "login.html")
+        if request.successful_authenticator:
+            response = redirect("/")
+        else:
+            response = render(request, "login.html")
+
+        return response
 
     def authorization(self, request: Request):
         username = request.POST.get("username", "")
