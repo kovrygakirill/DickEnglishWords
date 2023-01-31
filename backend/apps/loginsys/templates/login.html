@@ -49,6 +49,13 @@
                                         <script>marked_in_red_login_data()</script>
                                     {% else %}
                                         <label id="login_label_error"></label>
+                                        <script>disappearBlockLoginError()</script>
+                                    {% endif %}
+                                </div>
+                                <div class="successful">
+                                    {% if register_success %}
+                                        <label>{{ register_success }}</label>
+
                                     {% endif %}
                                 </div>
                                 <div class="form-group text-center">

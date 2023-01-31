@@ -1,3 +1,8 @@
+.successful {
+	text-align: center;
+	color: #1CB94E;
+}
+
 .error {
 	text-align: center;
 	color: red;

@@ -9,7 +9,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def create_not_active_user(username: str, email: str, password: str) -> UserProfile:
+def create_user_profile(username: str, email: str, password: str) -> UserProfile:
     try:
         with transaction.atomic():
             user = User.objects.create_user(

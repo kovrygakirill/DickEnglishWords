@@ -1,6 +1,7 @@
 $(document).ready(function () {
-    var register_page = document.getElementById("register_label_error").innerHTML;
-    if (register_page) {
+    var register_page = document.getElementById("register_label_error");
+    var register_value = register_page == null ? "" : register_page.innerHTML;
+    if (register_value) {
         $("#register-form-link").trigger("click");
     } else {
         $("#login-form-link").trigger("click");
@@ -57,6 +58,8 @@ function verifyLoginData(e) {
     if (!result) {
         // var ffd= $("#"+e.id+'label[id="label_error"]');
         document.getElementById("login_label_error").innerHTML = 'Fill in the all fields, please!';
+        appearBlockLoginError();
+        disappearBlockRegisterSuccess();
     }
 
     return result
@@ -117,6 +120,33 @@ function verifyRegisterData(e) {
     }
     validateEmail(email);
 
+    if (!result){
+        appearBlockLoginError();
+        disappearBlockRegisterSuccess();
+    }
+
     return result
 }
+
+function disappearBlockLoginError() {
+    var elems = document.getElementsByClassName('error');
+    for (var i = 0; i < elems.length; i++) {
+        elems[i].style.display = "none";
+    }
+}
+
+function appearBlockLoginError() {
+    var elems = document.getElementsByClassName('error');
+    for (var i = 0; i < elems.length; i++) {
+        elems[i].style.display = "block";
+    }
+}
+
+function disappearBlockRegisterSuccess() {
+    var elems = document.getElementsByClassName('successful');
+    for (var i = 0; i < elems.length; i++) {
+        elems[i].style.display = "none";
+    }
+}
+
 
